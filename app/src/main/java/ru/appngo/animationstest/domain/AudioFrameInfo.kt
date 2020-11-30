@@ -1,5 +1,5 @@
 package ru.appngo.animationstest.domain
 
-data class Volume(
+data class AudioFrameInfo(
     val volume: Int
 )

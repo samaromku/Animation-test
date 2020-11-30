@@ -8,14 +8,17 @@ import android.util.AttributeSet
 import android.view.View
 import androidx.core.content.ContextCompat
 import ru.appngo.animationstest.R
-import ru.appngo.animationstest.domain.Volume
+import ru.appngo.animationstest.domain.AudioFrameInfo
 
 class AudioView(
     context: Context,
     attributeSet: AttributeSet? = null
 ) : View(context, attributeSet) {
 
-    var volumes = listOf<Volume>()
+    var volumes = listOf<AudioFrameInfo>()
+        /*
+        Add this method because we shouldn't create objects in onDraw()
+         */
         set(value) {
             field = value
             updateRects(field)
@@ -32,10 +35,19 @@ class AudioView(
         }
     }
 
-    private fun updateRects(volumes: List<Volume>) {
+    /*
+    Create and update the list of rectangles which will be drawn in the next manner:
+    * - rect (10f)
+    - space  (10f)
+    **-**-**-**-**
+    ** ** ** **
+    **    **
+          **
+     */
+    private fun updateRects(audioFrameInfos: List<AudioFrameInfo>) {
         val tempRects = mutableListOf<RectF>()
         var tempRight = 0f
-        volumes.forEach {
+        audioFrameInfos.forEach {
             tempRects.add(RectF(tempRight, 0f, tempRight + 20f, it.volume.toFloat()))
             tempRight += 30f
         }

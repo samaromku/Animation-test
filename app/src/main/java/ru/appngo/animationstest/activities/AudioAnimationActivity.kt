@@ -6,9 +6,17 @@ import android.app.Activity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_audio_animation.*
 import ru.appngo.animationstest.R
-import ru.appngo.animationstest.domain.Volume
+import ru.appngo.animationstest.domain.AudioFrameInfo
+import kotlin.random.Random
 
 class AudioAnimationActivity : Activity() {
+
+    private val fullList: List<AudioFrameInfo> =
+            generateSequence {
+                AudioFrameInfo(Random.nextInt(1000))
+            }
+                    .take(50)
+                    .toList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,51 +32,11 @@ class AudioAnimationActivity : Activity() {
             setValues(percentToDrawProperty)
             addUpdateListener {
                 val percent = it.getAnimatedValue(percentsToDraw) as Float
-                val allList = getFullList()
-                val partOfList =  allList.size * percent / 100.0f
+                val allList = fullList
+                val partOfList = allList.size * percent / 100.0f
                 audio_view.volumes = allList.take(partOfList.toInt())
                 audio_view.invalidate()
             }
         }.start()
-    }
-
-    private fun getFullList(): List<Volume> {
-        return listOf(
-                Volume(123),
-                Volume(12),
-                Volume(1203),
-                Volume(200),
-                Volume(400),
-                Volume(300),
-                Volume(107),
-                Volume(50),
-                Volume(123),
-                Volume(120),
-                Volume(103),
-                Volume(250),
-                Volume(400),
-                Volume(500),
-                Volume(10),
-                Volume(50),
-                Volume(123),
-                Volume(12),
-                Volume(203),
-                Volume(200),
-                Volume(700),
-                Volume(330),
-                Volume(100),
-                Volume(50),
-                Volume(400),
-                Volume(500),
-                Volume(10),
-                Volume(50),
-                Volume(123),
-                Volume(12),
-                Volume(203),
-                Volume(200),
-                Volume(700),
-                Volume(330),
-                Volume(100),
-        )
     }
 }
