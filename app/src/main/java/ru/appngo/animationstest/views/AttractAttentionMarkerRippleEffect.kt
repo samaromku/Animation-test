@@ -14,7 +14,7 @@ import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.core.content.ContextCompat
 import ru.appngo.animationstest.R
 
-class ViewWithRippleEffect(
+class AttractAttentionMarkerRippleEffect(
     context: Context,
     attributeSet: AttributeSet? = null
 ) : View(context, attributeSet) {
@@ -32,7 +32,7 @@ class ViewWithRippleEffect(
         color = ContextCompat.getColor(context, R.color.colorAccent)
     }
 
-    private val circleRect = RectF(500f, 500f, 550f, 550f)
+    private val circleRect = RectF(150f, 150f, 200f, 200f)
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)

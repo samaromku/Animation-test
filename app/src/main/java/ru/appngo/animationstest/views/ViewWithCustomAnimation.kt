@@ -14,6 +14,7 @@ import android.view.View
 import android.view.animation.AccelerateDecelerateInterpolator
 import androidx.core.content.ContextCompat
 import ru.appngo.animationstest.R
+import ru.appngo.animationstest.views.Coordinates.Companion.getCoordinatesWithCenterOnTap
 
 
 class ViewWithCustomAnimation(
@@ -52,20 +53,6 @@ class ViewWithCustomAnimation(
             reduceAnimation(coordinates)
         }
         return true
-    }
-
-    private fun getCoordinatesWithCenterOnTap(topLeftX: Float, topLeftY: Float, size: Float): Coordinates {
-        val newTopLeftX = topLeftX - size / 2
-        val newTopLeftY = topLeftY - size / 2
-        return Coordinates(
-                topLeftX = newTopLeftX,
-                topLeftY = newTopLeftY,
-                bottomRightX = newTopLeftX + size,
-                bottomRightY = newTopLeftY + size,
-                radius = 150f,
-                centerX = topLeftX,
-                centerY = topLeftY,
-                alpha = 0)
     }
 
     /**
@@ -127,11 +114,11 @@ class ViewWithCustomAnimation(
         animator.addUpdateListener { animation ->
             with(viewCoordinates[viewCoordinates.indexOf(coordinates)]) {
                 val currentValue = animation.getAnimatedValue(rippleName) as Float
-                topLeftX-=currentValue
-                topLeftY-=currentValue
-                bottomRightX+=currentValue
-                bottomRightY+=currentValue
-                radius+=currentValue
+                topLeftX -= currentValue
+                topLeftY -= currentValue
+                bottomRightX += currentValue
+                bottomRightY += currentValue
+                radius += currentValue
             }
             invalidate()
         }
@@ -189,4 +176,20 @@ data class Coordinates(
     val centerY: Float,
     var radius: Float,
     var alpha: Int
-)
+) {
+    companion object {
+        fun getCoordinatesWithCenterOnTap(topLeftX: Float, topLeftY: Float, size: Float): Coordinates {
+            val newTopLeftX = topLeftX - size / 2
+            val newTopLeftY = topLeftY - size / 2
+            return Coordinates(
+                    topLeftX = newTopLeftX,
+                    topLeftY = newTopLeftY,
+                    bottomRightX = newTopLeftX + size,
+                    bottomRightY = newTopLeftY + size,
+                    radius = 150f,
+                    centerX = topLeftX,
+                    centerY = topLeftY,
+                    alpha = 0)
+        }
+    }
+}
