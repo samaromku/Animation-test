@@ -21,10 +21,10 @@ class AudioAnimationActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_audio_animation)
-        drawPathGradually()
+        drawAudioGradually()
     }
 
-    private fun drawPathGradually() {
+    private fun drawAudioGradually() {
         val percentsToDraw = "percentToDraw"
         val percentToDrawProperty = PropertyValuesHolder.ofFloat(percentsToDraw, 0f, 100f)
         ValueAnimator().apply {
