@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AnimationsTest</string>
+    <string name="shared_image">shared image</string>
 </resources>
