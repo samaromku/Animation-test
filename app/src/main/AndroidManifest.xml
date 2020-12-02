@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AnimationsTest"
         >
-        <activity android:name=".activities.ResourceAnimationActivity">
+        <activity android:name=".activities.withfragments.FragmentsAnimationActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

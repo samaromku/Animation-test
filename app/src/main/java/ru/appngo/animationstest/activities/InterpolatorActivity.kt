@@ -46,7 +46,7 @@ class InterpolatorActivity : Activity() {
     }
 
     private fun linearAnimation() {
-        ObjectAnimator.ofFloat(findViewById(R.id.linear), View.TRANSLATION_X, 500f).apply {
+        ObjectAnimator.ofFloat(findViewById(R.id.linear), View.TRANSLATION_X, 700f).apply {
             duration = 3000
             interpolator = LinearInterpolator()
             repeatCount = ObjectAnimator.INFINITE
@@ -57,7 +57,7 @@ class InterpolatorActivity : Activity() {
     }
 
     private fun bounceAnimation() {
-        ObjectAnimator.ofFloat(findViewById(R.id.bounce), View.TRANSLATION_X, 500f).apply {
+        ObjectAnimator.ofFloat(findViewById(R.id.bounce), View.TRANSLATION_X, 700f).apply {
             duration = 3000
             interpolator = BounceInterpolator()
             repeatCount = ObjectAnimator.INFINITE
@@ -67,7 +67,7 @@ class InterpolatorActivity : Activity() {
     }
 
     private fun accelerateAnimation() {
-        ObjectAnimator.ofFloat(findViewById(R.id.accelerate), View.TRANSLATION_X, 500f).apply {
+        ObjectAnimator.ofFloat(findViewById(R.id.accelerate), View.TRANSLATION_X, 700f).apply {
             duration = 3000
             interpolator = AccelerateInterpolator()
             repeatCount = ObjectAnimator.INFINITE
@@ -77,7 +77,7 @@ class InterpolatorActivity : Activity() {
     }
 
     private fun decelerateAnimation() {
-        ObjectAnimator.ofFloat(findViewById(R.id.decelerate), View.TRANSLATION_X, 500f).apply {
+        ObjectAnimator.ofFloat(findViewById(R.id.decelerate), View.TRANSLATION_X, 700f).apply {
             duration = 3000
             interpolator = DecelerateInterpolator()
             repeatCount = ObjectAnimator.INFINITE
@@ -87,7 +87,7 @@ class InterpolatorActivity : Activity() {
     }
 
     private fun overshootAnimation() {
-        ObjectAnimator.ofFloat(findViewById(R.id.overshoot), View.TRANSLATION_X, 500f).apply {
+        ObjectAnimator.ofFloat(findViewById(R.id.overshoot), View.TRANSLATION_X, 700f).apply {
             duration = 3000
             interpolator = OvershootInterpolator()
             repeatCount = ObjectAnimator.INFINITE
