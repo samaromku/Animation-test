@@ -48,8 +48,8 @@ class AudioView(
         val tempRects = mutableListOf<RectF>()
         var tempRight = 0f
         audioFrameInfos.forEach {
-            tempRects.add(RectF(tempRight, 0f, tempRight + 20f, it.volume.toFloat()))
-            tempRight += 30f
+            tempRects.add(RectF(tempRight, 0f, tempRight + 4f, it.volume.toFloat()))
+            tempRight += 6f
         }
         rects = tempRects
     }

@@ -11,24 +11,35 @@ import kotlin.random.Random
 
 class AudioAnimationActivity : Activity() {
 
+    private var animator: ValueAnimator? = null
+
     private val fullList: List<AudioFrameInfo> =
             generateSequence {
-                AudioFrameInfo(Random.nextInt(1000))
+                AudioFrameInfo(Random.nextInt(300))
             }
-                    .take(50)
+                    .take(1050)
                     .toList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_audio_animation)
-        drawAudioGradually()
+        play_button.setOnClickListener {
+            if (animator == null) {
+                drawAudioGradually()
+            } else {
+                animator?.resume()
+            }
+        }
+        pause_button.setOnClickListener {
+            animator?.pause()
+        }
     }
 
     private fun drawAudioGradually() {
         val percentsToDraw = "percentToDraw"
         val percentToDrawProperty = PropertyValuesHolder.ofFloat(percentsToDraw, 0f, 100f)
-        ValueAnimator().apply {
-            duration = 5000
+        animator = ValueAnimator().apply {
+            duration = 15000
             setValues(percentToDrawProperty)
             addUpdateListener {
                 val percent = it.getAnimatedValue(percentsToDraw) as Float
@@ -37,6 +48,7 @@ class AudioAnimationActivity : Activity() {
                 audio_view.volumes = allList.take(partOfList.toInt())
                 audio_view.invalidate()
             }
-        }.start()
+        }
+        animator?.start()
     }
 }
