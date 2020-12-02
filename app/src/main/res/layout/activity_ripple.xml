@@ -70,7 +70,7 @@
             android:layout_height="200dp"
             android:layout_margin="8dp"
             />
-        <ru.appngo.animationstest.views.ViewWithRipple
+        <ru.appngo.animationstest.views.ViewWithRepoScaleAnimation
             android:layout_width="200dp"
             android:layout_height="200dp"
             android:layout_margin="8dp"
