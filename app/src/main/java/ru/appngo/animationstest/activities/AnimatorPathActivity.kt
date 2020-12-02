@@ -9,18 +9,17 @@ import android.graphics.Path
 import android.os.Bundle
 import android.view.View
 import android.view.animation.PathInterpolator
-import androidx.core.content.ContextCompat
 import androidx.core.graphics.PathParser
-import kotlinx.android.synthetic.main.activity_animators.*
+import kotlinx.android.synthetic.main.activity_animators_path.*
 import ru.appngo.animationstest.R
 
-class AnimatorActivity : Activity() {
+class AnimatorPathActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_animators)
+        setContentView(R.layout.activity_animators_path)
         test_button.setOnClickListener {
-            changeViewBackgroundColor(test_view)
+            animatePath(test_view)
         }
     }
 
@@ -38,14 +37,6 @@ class AnimatorActivity : Activity() {
                 test_view.translationX = it.getAnimatedValue(TRANSLATION_X) as Float
                 test_view.translationY = it.getAnimatedValue(TRANSLATION_Y) as Float
             }
-        }.start()
-    }
-
-    private fun changeViewBackgroundColor(view: View) {
-        val firstColor = ContextCompat.getColor(this, R.color.colorAccent)
-        val secondColor = ContextCompat.getColor(this, R.color.purple_700)
-        ObjectAnimator.ofArgb(view, "backgroundColor", firstColor, secondColor).apply {
-            duration = 3000
         }.start()
     }
 
@@ -80,8 +71,7 @@ class AnimatorActivity : Activity() {
     }
 
     private fun getPathFromPathData(): Path {
-        val path = PathParser.createPathFromPathData(
-                "M22,11h-4.17l3.24,-3.24 -1.41,-1.42L15,11h-2V9l4.66,-4.66 -1.42,-1.41L13,6.17V2h-2v4.17L7.76,2.93 6.34,4.34 11,9v2H9L4.34,6.34 2.93,7.76 6.17,11H2v2h4.17l-3.24,3.24 1.41,1.42L9,13h2v2l-4.66,4.66 1.42,1.41L11,17.83V22h2v-4.17l3.24,3.24 1.42,-1.41L13,15v-2h2l4.66,4.66 1.41,-1.42L17.83,13H22z")
+        val path = PathParser.createPathFromPathData("M19,13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z")
         val scaleMatrix = Matrix()
         scaleMatrix.setScale(10f, 10f)
         path.transform(scaleMatrix)
