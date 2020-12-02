@@ -19,7 +19,9 @@ class AnimatorActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_animators)
-        animatePath(test_view)
+        test_button.setOnClickListener {
+            changeViewBackgroundColor(test_view)
+        }
     }
 
     private val TRANSLATION_X = "TRANSLATION_X"
@@ -41,7 +43,7 @@ class AnimatorActivity : Activity() {
 
     private fun changeViewBackgroundColor(view: View) {
         val firstColor = ContextCompat.getColor(this, R.color.colorAccent)
-        val secondColor = ContextCompat.getColor(this, R.color.teal_200)
+        val secondColor = ContextCompat.getColor(this, R.color.purple_700)
         ObjectAnimator.ofArgb(view, "backgroundColor", firstColor, secondColor).apply {
             duration = 3000
         }.start()
