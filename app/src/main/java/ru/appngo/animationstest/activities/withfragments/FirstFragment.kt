@@ -20,11 +20,10 @@ class FirstFragment : Fragment(
         ViewCompat.setTransitionName(shared_image, getString(R.string.shared_image))
         shared_image.setOnClickListener {
             val thirdFragment = ThirdFragment().apply {
-                val set = TransitionSet()
+                sharedElementEnterTransition = TransitionSet()
                         .addTransition(ChangeBounds())
                         .addTransition(ChangeTransform())
                         .addTransition(ChangeImageTransform())
-                sharedElementEnterTransition = set
             }
             requireActivity().supportFragmentManager
                     .beginTransaction()

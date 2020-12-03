@@ -24,12 +24,14 @@ class AttractAttentionMarkerRippleEffect(
         strokeWidth = 10f
     }
 
-    private val ripplePaint = Paint().apply {
+    private val firstStrokePaint = Paint().apply {
         color = ContextCompat.getColor(context, R.color.colorAccent)
+        style = Paint.Style.STROKE
     }
 
-    private val secondRipplePaint = Paint().apply {
+    private val secondStrokePaint = Paint().apply {
         color = ContextCompat.getColor(context, R.color.colorAccent)
+        style = Paint.Style.STROKE
     }
 
     private val circleRect = RectF(150f, 150f, 200f, 200f)
@@ -37,8 +39,8 @@ class AttractAttentionMarkerRippleEffect(
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         canvas.drawOval(circleRect, circlePaint)
-        canvas.drawOval(circleRect, ripplePaint)
-        canvas.drawOval(circleRect, secondRipplePaint)
+        canvas.drawOval(circleRect, firstStrokePaint)
+        canvas.drawOval(circleRect, secondStrokePaint)
     }
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
@@ -62,17 +64,15 @@ class AttractAttentionMarkerRippleEffect(
         animator.addUpdateListener { animation ->
             val resizeStrokeValue = animation.getAnimatedValue(strokeName) as Float
             val alphaValue = animation.getAnimatedValue(alphaName) as Int
-            ripplePaint.style = Paint.Style.STROKE
-            ripplePaint.strokeWidth = resizeStrokeValue
-            ripplePaint.alpha = alphaValue
-            secondRipplePaint.style = Paint.Style.STROKE
-            secondRipplePaint.strokeWidth = resizeStrokeValue + 100
+            firstStrokePaint.strokeWidth = resizeStrokeValue
+            firstStrokePaint.alpha = alphaValue
+            secondStrokePaint.strokeWidth = resizeStrokeValue + 100
             val secondAlpha = if (alphaValue - 20 <= 0) {
                 0
             } else {
                 alphaValue - 20
             }
-            secondRipplePaint.alpha = secondAlpha
+            secondStrokePaint.alpha = secondAlpha
             invalidate()
         }
         animator.start()

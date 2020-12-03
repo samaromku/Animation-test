@@ -5,7 +5,4 @@ import ru.appngo.animationstest.R
 
 class ThirdFragment : Fragment(
         R.layout.fragment_third
-) {
-
-
-}
+)

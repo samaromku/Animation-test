@@ -10,6 +10,8 @@ class TimerActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_timer)
-        timer_image.animateView()
+        timer_button.setOnClickListener {
+            timer_image.animateView()
+        }
     }
 }

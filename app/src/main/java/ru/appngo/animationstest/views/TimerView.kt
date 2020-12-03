@@ -49,7 +49,7 @@ class TimerView(
         val angle = "angle"
         val propertyAngle = PropertyValuesHolder.ofFloat(angle, 0f, 360f)
         ValueAnimator().apply {
-            duration = 10000
+            duration = 5000
             setValues(propertyAngle)
             interpolator = AccelerateDecelerateInterpolator()
             addUpdateListener { animation ->

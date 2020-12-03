@@ -9,6 +9,9 @@ class SquareView(
     attributeSet: AttributeSet? = null
 ) : View(context, attributeSet) {
 
+    /*
+    Draw square view with minimal side.
+     */
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         if (widthMeasureSpec > heightMeasureSpec) {
             super.onMeasure(heightMeasureSpec, heightMeasureSpec)
